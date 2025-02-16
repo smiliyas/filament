@@ -74,7 +74,6 @@ export default function fileUploadFormComponent({
     uploadUsing,
     mimeTypeMap,
 }) {
-
     return {
         fileKeyIndex: {},
 
@@ -204,8 +203,14 @@ export default function fileUploadFormComponent({
                 },
                 fileValidateTypeDetectType: (source, detectedType) => {
                     return new Promise((resolve, reject) => {
-                        const extension = source.name.split('.').pop().toLowerCase()
-                        const mimeType = mimeTypeMap[extension] || detectedType || mime.getType(extension)
+                        const extension = source.name
+                            .split('.')
+                            .pop()
+                            .toLowerCase()
+                        const mimeType =
+                            mimeTypeMap[extension] ||
+                            detectedType ||
+                            mime.getType(extension)
 
                         mimeType ? resolve(mimeType) : reject()
                     })
