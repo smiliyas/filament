@@ -75,6 +75,11 @@ class FileUpload extends BaseFileUpload
      */
     protected array | Closure $imageEditorAspectRatios = [];
 
+    /**
+     * @var array<string, string>
+     */
+    protected array $mimeTypeMap = [];
+
     public function appendFiles(bool | Closure $condition = true): static
     {
         $this->shouldAppendFiles = $condition;
@@ -470,7 +475,7 @@ class FileUpload extends BaseFileUpload
             )
             ->unique()
             ->mapWithKeys(fn (?string $ratio): array => [
-                $ratio ?? __('filament-forms::components.file_upload.editor.aspect_ratios.no_fixed.label') => $this->normalizeImageCroppingRatioForJs($ratio),
+                    $ratio ?? __('filament-forms::components.file_upload.editor.aspect_ratios.no_fixed.label') => $this->normalizeImageCroppingRatioForJs($ratio),
             ])
             ->filter(fn (float | string | false $ratio): bool => $ratio !== false)
             ->when(
@@ -587,5 +592,23 @@ class FileUpload extends BaseFileUpload
                 ],
             ],
         ];
+    }
+
+    /**
+     * @param array<string, string> $mimeTypeMap
+     */
+    public function mimeTypeMap(array $mimeTypeMap): static
+    {
+        $this->mimeTypeMap = $mimeTypeMap;
+
+        return $this;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function getMimeTypeMap(): array
+    {
+        return $this->mimeTypeMap;
     }
 }

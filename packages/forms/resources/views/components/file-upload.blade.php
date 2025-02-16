@@ -39,6 +39,7 @@
                     deleteUploadedFileUsing: async (fileKey) => {
                         return await $wire.deleteUploadedFile(@js($statePath), fileKey)
                     },
+                    mimeTypeMap: @js($getMimeTypeMap()),
                     getUploadedFilesUsing: async () => {
                         return await $wire.getFormUploadedFiles(@js($statePath))
                     },
