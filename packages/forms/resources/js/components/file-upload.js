@@ -58,6 +58,7 @@ export default function fileUploadFormComponent({
     maxSize,
     minSize,
     maxParallelUploads,
+    mimeTypeMap,
     panelAspectRatio,
     panelLayout,
     placeholder,
@@ -72,7 +73,6 @@ export default function fileUploadFormComponent({
     uploadingMessage,
     uploadProgressIndicatorPosition,
     uploadUsing,
-    mimeTypeMap,
 }) {
     return {
         fileKeyIndex: {},
