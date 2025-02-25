@@ -22,7 +22,7 @@ trait CanGeneratePanels
             required: true,
             validate: fn (string $value) => match (true) {
                 preg_match('/^[a-zA-Z].*/', $value) => null,
-                default => 'The ID must start with an alphabet letter.',
+                default => 'The ID must start with a letter, and not a number or special character.',
             },
         ));
 
