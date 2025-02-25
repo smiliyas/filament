@@ -595,11 +595,11 @@ class FileUpload extends BaseFileUpload
     }
 
     /**
-     * @param  array<string, string> | Closure  $mimeTypeMap
+     * @param  array<string, string> | Closure  $map
      */
-    public function mimeTypeMap(array | Closure $mimeTypeMap): static
+    public function mimeTypeMap(array | Closure $map): static
     {
-        $this->mimeTypeMap = $mimeTypeMap;
+        $this->mimeTypeMap = $map;
 
         return $this;
     }
