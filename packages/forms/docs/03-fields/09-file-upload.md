@@ -460,6 +460,24 @@ FileUpload::make('image')
     ->image()
 ```
 
+#### Custom MIME type mapping
+
+Some file formats may not be recognized correctly by the browser when uploading files. Filament allows you to manually define MIME types for specific file extensions using the `mimeTypeMap()` method:
+
+```php
+use Filament\Forms\Components\FileUpload;
+
+FileUpload::make('designs')
+    ->acceptedFileTypes([
+        'x-world/x-3dmf',
+        'application/vnd.sketchup.skp',
+    ])
+    ->mimeTypeMap([
+        '3dm' => 'x-world/x-3dmf',
+        'skp' => 'application/vnd.sketchup.skp',
+    ]);
+```
+
 ### File size validation
 
 You may also restrict the size of uploaded files in kilobytes:
@@ -510,20 +528,4 @@ FileUpload::make('attachments')
     ->multiple()
     ->minFiles(2)
     ->maxFiles(5)
-```
-
-## Custom MIME Type Mapping
-
-Some file formats may not be recognized correctly by the browser when uploading files. Filament allows you to manually define MIME types for specific file extensions using the `mimeTypeMap()` method:
-
-```php
-FileUpload::make('designs')
-    ->mimeTypeMap([
-        '3dm' => 'x-world/x-3dmf',
-        'skp' => 'application/vnd.sketchup.skp',
-    ])
-    ->acceptedFileTypes([
-        'x-world/x-3dmf',
-        'application/vnd.sketchup.skp',
-    ]);
 ```
