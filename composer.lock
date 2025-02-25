@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4aab62a8f2a2011c1e149cc042ebe156",
+    "content-hash": "7a1384397419393f885abf516700f5c7",
     "packages": [],
     "packages-dev": [
         {
@@ -1383,7 +1383,7 @@
         },
         {
             "name": "filament/support",
-            "version": "3.x-dev",
+            "version": "4.x-dev",
             "dist": {
                 "type": "path",
                 "url": "packages/support",
