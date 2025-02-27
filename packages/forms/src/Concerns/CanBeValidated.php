@@ -4,6 +4,7 @@ namespace Filament\Forms\Concerns;
 
 use Filament\Forms\Components;
 use Filament\Forms\Components\Component;
+use Illuminate\Validation\ValidationException;
 
 trait CanBeValidated
 {
@@ -119,5 +120,27 @@ trait CanBeValidated
         }
 
         return $this->getLivewire()->validate($rules, $this->getValidationMessages(), $this->getValidationAttributes());
+    }
+
+    /**
+     * @param string $field
+     * @param array<string, array>|null $rules
+     * @param array<string, array<string, string>> $messages
+     * @param array<string, string> $attributes
+     * @param array<string, string> $dataOverrides
+     * @return array<string, mixed>
+     */
+    public function validateOnly(string $field, ?array $rules = null, array $messages = [], array $attributes = [], array $dataOverrides = []): array
+    {
+        $rules ??= [];
+
+        $component = $this->getComponent($field);
+        if ($component instanceof Components\Contracts\HasValidationRules) {
+            $component->dehydrateValidationRules($rules);
+            $component->dehydrateValidationMessages($messages);
+            $component->dehydrateValidationAttributes($attributes);
+        }
+
+        return $this->getLivewire()->validateOnly($field, $rules, $messages, $attributes, $dataOverrides);
     }
 }
