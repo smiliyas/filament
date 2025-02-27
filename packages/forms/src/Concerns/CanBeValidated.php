@@ -4,7 +4,6 @@ namespace Filament\Forms\Concerns;
 
 use Filament\Forms\Components;
 use Filament\Forms\Components\Component;
-use Illuminate\Validation\ValidationException;
 
 trait CanBeValidated
 {
@@ -123,11 +122,10 @@ trait CanBeValidated
     }
 
     /**
-     * @param string $field
-     * @param array<string, array>|null $rules
-     * @param array<string, array<string, string>> $messages
-     * @param array<string, string> $attributes
-     * @param array<string, string> $dataOverrides
+     * @param  array<string, array>|null  $rules
+     * @param  array<string, array<string, string>>  $messages
+     * @param  array<string, string>  $attributes
+     * @param  array<string, string>  $dataOverrides
      * @return array<string, mixed>
      */
     public function validateOnly(string $field, ?array $rules = null, array $messages = [], array $attributes = [], array $dataOverrides = []): array
