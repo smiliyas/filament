@@ -70,7 +70,7 @@ class NavigationManager
                     $items->get($parentItemLabel)->childItems($parentItemItems);
                 });
 
-                $items = $items->filter(fn (NavigationItem $item): bool => filled($item->getChildItems() || $item->getUrl()));
+                $items = $items->filter(fn (NavigationItem $item): bool => (filled($item->getChildItems()) || filled($item->getUrl())));
 
                 if (blank($groupIndex)) {
                     return NavigationGroup::make()->items($items);
