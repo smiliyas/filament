@@ -122,8 +122,8 @@ trait CanBeValidated
     }
 
     /**
-     * @param  array<string, array>|null  $rules
-     * @param  array<string, array<string, string>>  $messages
+     * @param  array<string, array<mixed>>|null  $rules
+     * @param  array<string, string|array<string, string>>  $messages
      * @param  array<string, string>  $attributes
      * @param  array<string, string>  $dataOverrides
      * @return array<string, mixed>

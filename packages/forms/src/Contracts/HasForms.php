@@ -60,4 +60,14 @@ interface HasForms
      * @return array<string, mixed>
      */
     public function validate($rules = null, $messages = [], $attributes = []);
+
+    /**
+     * @param  string  $field
+     * @param  array<string, array<mixed>>|null  $rules
+     * @param  array<string, string|array<string, string>>  $messages
+     * @param  array<string, string>  $attributes
+     * @param  array<string, string>  $dataOverrides
+     * @return array<string, mixed>
+     */
+    public function validateOnly($field, $rules = null, $messages = [], $attributes = [], $dataOverrides = []);
 }
